@@ -1,4 +1,20 @@
-export function renderProfile(userData, container) {
+export function renderProfile(userData, userRepos, container) {
+
+const repositoresHtml = userRepos && userRepos.length > 0 ? userRepos.map(repo =>`
+  <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+    <div class="repository-card">
+      <h3>${repo.name}</h3>
+      <div class="repository-stats">
+        <span>⭐ Stars: ${repo.stargazers_count}</span>
+        <span>🍴 Forks: ${repo.forks_count}</span>
+        <span>👀 Watchers: ${repo.watchers_count}</span>
+        <span>💻 Language: ${repo.language || 'Não informada'}</span>
+      </div>
+    </div>
+  </a>
+`).join('') : `<p>Não há repositórios para exibir.</p>`
+
+
   container.innerHTML = `
     <div class="profile-card">
       <img src="${userData.avatar_url}" alt="Avatar de ${
@@ -19,6 +35,11 @@ export function renderProfile(userData, container) {
             <h4>👥 Seguindo</h4>
             <span>${userData.following}</span>
         </div>
+    </div>
+    <div class="profile-repositores">
+    <h2>Repositorios</h2>
+    <div class="repositories">
+    ${repositoresHtml}
     </div>
   `;
 }

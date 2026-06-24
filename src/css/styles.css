@@ -244,6 +244,75 @@ main {
   font-weight: bold;
 }
 
+.profile-repositores {
+  width: min(100%, 70rem);
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+}
+
+.profile-repositores h2 {
+  margin: 0 0 var(--spacing-lg);
+  font-size: var(--font-2xl);
+}
+
+.repositories {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+  align-items: stretch;
+}
+
+.repositories a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.repositories a:hover .repository-card {
+  transform: translateY(-2px);
+}
+
+.repository-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-md);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.repository-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: var(--font-md);
+  color: var(--foreground);
+}
+
+.repository-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.repository-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--muted);
+  padding: 0.5rem 0.75rem;
+  color: var(--muted-foreground);
+  font-size: var(--font-sm);
+}
+
+/* Responsive adjustments: 2 columns on medium, 1 on mobile */
+@media (max-width: 1024px) {
+  .repositories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .profile-card {
     flex-direction: column;
